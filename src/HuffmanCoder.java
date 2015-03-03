@@ -118,26 +118,5 @@ public class HuffmanCoder {
 		}
 		
 	}//Node
-<<<<<<< HEAD
 } // HuffmanCoder
-||||||| merged common ancestors
-	
-	
-	
-	
-	public static void main(String [] args){	
-		HuffmanCoder theHuff = new HuffmanCoder();
-		theHuff.readString("Hello hello, how are you?!");
-		theHuff.printOccurrences();
-		
-	}
-	
-	
 
-}
-=======
-	
-}
-
-
->>>>>>> a46d663eb89f72e2173bf1b8b3ed0474807d4e77
