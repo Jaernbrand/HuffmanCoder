@@ -34,7 +34,7 @@ public class HuffmanCoder {
 	}
 	
 		
-	public void printOccurrences(){
+	private void printOccurrences(){
 		Set<Character> keys = chars.keySet();
 		System.out.println("char | occurrences");
 		for(Character c : keys)
@@ -71,15 +71,37 @@ public class HuffmanCoder {
 		void setWeight(int i){
 			weight = i;
 		}
+		
+		char getChar(){
+			return character;
+		}
+
+		void setChar(char c){
+			character = c;
+		}
+		
+		Node getRightChild(){
+			return rightChild;
+		}
+		
+		void setRightChild(Node right){
+			rightChild = right;
+		}
+		
+		Node getLeftChild(){
+			return leftChild;
+		}
+		
+		void setLeftChild(Node left){
+			leftChild = left;
+		}
 
 		@Override
 		public int compareTo(Node other){
-			return Integer.compare(weight, other.getWeight());
+			return weight - other.getWeight();
 		}
 		
 	}//Node
-	
-	
 	
 	
 	public static void main(String [] args){	
