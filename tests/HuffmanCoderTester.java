@@ -2,6 +2,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.Map;
@@ -36,4 +38,24 @@ public class HuffmanCoderTester {
 	public void test(){
 		fail();
 	}
+	
+	@Test
+	public void testDfsTreePath(){
+		HuffmanCoder dustin = new HuffmanCoder();
+		dustin.readString("alla gillar rally");
+		dustin.createNodes();
+		
+		ArrayList<Integer> theWay = dustin.dfs(dustin.buildTree(), 'a');
+		ArrayList<Integer> oracle = new ArrayList<Integer>(Arrays.asList(0,1));
+		
+		for(int i = 0; i < theWay.size(); ++i)
+			assertEquals(theWay.get(i), oracle.get(i));
+			
+	}
+	
+	
+	
 }
+
+
+

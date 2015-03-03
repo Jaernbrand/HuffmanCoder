@@ -29,7 +29,7 @@ public class HuffmanCoder {
 		
 	}
 	
-	private void createNodes(){
+	public void createNodes(){
 		Set<Character> keys = chars.keySet();
 		for(Character k : keys)
 			pQueue.add(new Node(k, chars.get(k)));
@@ -51,7 +51,7 @@ public class HuffmanCoder {
 			System.out.println(c + ": " + chars.get(c));
 	}
 	
-	private Node buildTree(){
+	public Node buildTree(){
 		
 		while(pQueue.size() != 1){
 			Node node1 = pQueue.poll();
@@ -60,18 +60,6 @@ public class HuffmanCoder {
 			pQueue.add(newNode);
 		} 
 		return pQueue.poll();
-	}
-	
-	
-	private byte getWay(ArrayList<Node> nodes){
-		
-		for(int i = 0; i < nodes.size(); ++i){
-			
-			
-			
-		}
-		
-		return 0;
 	}
 	
 	
@@ -88,7 +76,7 @@ public class HuffmanCoder {
 	}
 	
 	
-	private ArrayList<Integer> dfs(Node root, char c){
+	public ArrayList<Integer> dfs(Node root, char c){
 		Set<Node> visited = new HashSet<Node>(); //Keeps track of visited
 		ArrayList<Node> route = new ArrayList<Node>();//List to return
 		ArrayList<Integer> intRoute = new ArrayList<Integer>();//int representation of way
@@ -97,7 +85,8 @@ public class HuffmanCoder {
 		boolean done = false;
 		while(!done){
 			Node node = route.get(route.size()-1);
-			if(node.getChar() == c){
+			
+			if(node.getChar() != null && node.getChar() == c){
 				done = true;
 			}else{
 				visited.add(node);
@@ -112,7 +101,7 @@ public class HuffmanCoder {
 					route.add(node.getLeftChild());
 					intRoute.add(0);
 					hasUnvisited = true;
-				}
+				}//specialfall om noden inte har några barn, inte ta bort siffra?
 				if(!hasUnvisited){
 					route.remove(route.size()-1);
 					intRoute.remove(intRoute.size()-1);
@@ -155,7 +144,7 @@ public class HuffmanCoder {
 			weight = i;
 		}
 		
-		char getChar(){
+		Character getChar(){
 			return character;
 		}
 
