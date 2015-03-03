@@ -1,9 +1,9 @@
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Set;
-
 
 public class HuffmanCoder {
 
@@ -18,7 +18,7 @@ public class HuffmanCoder {
 
 		for(int i = 0; i < text.length(); ++i){
 			char currentChar = text.charAt(i);
-			if(chars.get(currentChar) != null){ 			//snabbare än containsKey
+			if(chars.get(currentChar) != null){ 			//snabbare Ã¤n containsKey
 				chars.put(currentChar, chars.get(currentChar) + 1);
 			}else{
 				chars.put(currentChar, 1);
@@ -33,6 +33,9 @@ public class HuffmanCoder {
 			pQueue.add(new Node(k, chars.get(k)));
 	}
 	
+	protected HashMap<Character, Integer> getOccurrences(){
+		return new HashMap<Character, Integer>(chars);
+	}
 		
 	public void printOccurrences(){
 		Set<Character> keys = chars.keySet();
@@ -74,21 +77,8 @@ public class HuffmanCoder {
 
 		@Override
 		public int compareTo(Node other){
-			return Integer.compare(weight, other.getWeight());
+			return weight - other.getWeight();
 		}
 		
 	}//Node
-	
-	
-	
-	
-	public static void main(String [] args){	
-		HuffmanCoder theHuff = new HuffmanCoder();
-		theHuff.readString("Hello hello, how are you?!");
-		theHuff.printOccurrences();
-		
-	}
-	
-	
-
-}
+} // HuffmanCoder
