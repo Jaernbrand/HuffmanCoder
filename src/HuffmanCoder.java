@@ -194,18 +194,5 @@ public class HuffmanCoder {
 	}//Node
 	
 	
-	private static class CharToByteRep{
-		
-		byte b;
-		int numbOfBytes;
-		
-		CharToByteRep(byte b, int numbOfBytes){
-			this.b = b;
-			this.numbOfBytes = numbOfBytes;
-			
-		}
-		
-	}//CharToByteRep
-	
 } // HuffmanCoder
 
