@@ -4,7 +4,8 @@ import org.junit.runners.Suite;
 
 @Suite.SuiteClasses({
    HuffmanTester.class,
-   HuffmanCoderTester.class
+   HuffmanCoderTester.class,
+   HuffmanDecoder.class
 })
 
 public class HuffmanSuite {}
