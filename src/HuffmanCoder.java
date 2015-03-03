@@ -33,6 +33,11 @@ public class HuffmanCoder {
 			pQueue.add(new Node(k, chars.get(k)));
 	}
 	
+	/**
+	 * Only for testing purposes. 
+	 * @return 
+	 * a copy of the map containing the number of occurrences for each character.
+	 */
 	protected HashMap<Character, Integer> getOccurrences(){
 		return new HashMap<Character, Integer>(chars);
 	}

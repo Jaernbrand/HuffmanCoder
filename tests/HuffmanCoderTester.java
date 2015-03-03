@@ -34,15 +34,6 @@ public class HuffmanCoderTester {
 	
 	@Test
 	public void test(){
-		
+		fail();
 	}
-	
-	@Test
-	pubic void (){
-		ByteArrayOutputStream output = new ByteArrayOutputStream();
-		HuffmanCoder theHuff = new HuffmanCoder();
-		theHuff.writeBytes(output);
-		String input = "alla gillar rally";
-	}
-
 }
