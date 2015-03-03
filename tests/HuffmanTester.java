@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.junit.Test;
 import java.io.FileInputStream;
 
+import huffman.*;
 
 public class HuffmanTester {
 

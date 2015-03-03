@@ -9,6 +9,8 @@ import java.util.Set;
 import java.util.Map;
 import java.io.ByteArrayOutputStream;
 
+import huffman.*;
+
 public class HuffmanCoderTester {
 
 	HuffmanCoder theHuff = new HuffmanCoder();

@@ -1,4 +1,6 @@
 
+package huffman;
+
 public class Huffman {
 	
 	
@@ -8,8 +10,8 @@ public class Huffman {
 	}
 	
 	private static void decode(String inputFile, String outputFile){
-		HuffmanCoder huff = new HuffmanCoder();
-		huff.decode();
+		HuffmanDecoder deHuff = new HuffmanDecoder();
+		deHuff.decode();
 	}
 	
 	private static void printHelp(){
