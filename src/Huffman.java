@@ -1,15 +1,44 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.FileReader;
 
 public class Huffman {
 	
+	private static String readText(String fileName){
+		String returnStr = "";
+		
+		BufferedReader br = null;
+		try{
+			FileReader fr = new FileReader(fileName);
+			br = new BufferedReader(fr);
+			
+			String tmpStr = br.readLine();
+			while(tmpStr != null){
+				returnStr += br.readLine();
+			}
+			
+		} catch (IOException e){
+			e.printStackTrace();
+		} finally {
+			try {
+				br.close();
+			} catch (IOException ex){
+				ex.printStackTrace();
+			}
+		}
+		
+		return returnStr;
+	}
 	
 	private static void encode(String inputFile, String outputFile){
 		HuffmanCoder huff = new HuffmanCoder();
-		huff.encode();
+		huff.encode( readText(inputFile) );
 	}
 	
 	private static void decode(String inputFile, String outputFile){
 		HuffmanCoder huff = new HuffmanCoder();
-		huff.decode();
+		// TODO
+		// huff.decode();
 	}
 	
 	private static void printHelp(){

@@ -29,6 +29,16 @@ public class HuffmanCoder {
 		
 	}
 	
+	public byte[] encode(String input){
+		// TODO
+		return null;
+	}
+	
+	public String decode(byte[] input){
+		// TODO
+		return null;
+	}
+	
 	private void createNodes(){
 		Set<Character> keys = chars.keySet();
 		for(Character k : keys)

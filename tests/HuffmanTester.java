@@ -14,15 +14,16 @@ public class HuffmanTester {
 		// TODO
 	}
 
-/*
 	@Test
-	pubic void (){
-		
+	public void testBytesAreCorrect(){
+		String[] args = {"-encode", "testFiles/testInput1.txt", "testFiles/testOutput.txt"};
+		Huffman.main(args);
 		
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		HuffmanCoder theHuff = new HuffmanCoder();
-		theHuff.writeBytes(output);
+		// TODO
+		//theHuff.writeBytes(output);
 		String input = "alla gillar rally";
+		fail();
 	}
-	*/
 }
