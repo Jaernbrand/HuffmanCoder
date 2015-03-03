@@ -1,5 +1,7 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -58,6 +60,59 @@ public class HuffmanCoder {
 			pQueue.add(newNode);
 		} 
 		return pQueue.poll();
+	}
+	
+	
+	private byte getWay(ArrayList<Node> nodes){
+		for(int i = 0; i < nodes.size(); ++i){
+			
+			
+		}
+		
+		return 0;
+	}
+	
+	
+	
+	private void makeCharRep(Node root){
+		Set<Character> keys = chars.keySet(); 
+		for(Character c : keys){
+			ArrayList<Node> nodes = dfs(root, c);
+			
+			
+		}
+		
+		
+	}
+	
+	
+	private ArrayList<Node> dfs(Node root, char c){
+		Set<Node> visited = new HashSet<Node>(); //Keeps track of visited
+		ArrayList<Node> route = new ArrayList<Node>();//List to return
+		
+		route.add(root);
+		boolean done = false;
+		while(!done){
+			Node node = route.get(route.size()-1);
+			if(node.getChar() == c){
+				done = true;
+			}else{
+				visited.add(node);
+				
+				boolean hasUnvisited = false;
+				if(node.getRightChild() != null && !visited.contains(node.getRightChild())){
+						route.add(node.getRightChild());
+						hasUnvisited = true;
+				}
+				else if(node.getLeftChild() != null && !visited.contains(node.getLeftChild())){
+					route.add(node.getLeftChild());
+					hasUnvisited = true;
+				}
+				if(!hasUnvisited)
+					route.remove(route.size()-1);
+			}
+		}
+		return route;			
 	}
 	
 	
@@ -121,6 +176,22 @@ public class HuffmanCoder {
 			return weight - other.getWeight();
 		}
 		
+		
 	}//Node
+	
+	
+	private static class CharToByteRep{
+		
+		byte b;
+		int numbOfBytes;
+		
+		CharToByteRep(byte b, int numbOfBytes){
+			this.b = b;
+			this.numbOfBytes = numbOfBytes;
+			
+		}
+		
+	}//CharToByteRep
+	
 } // HuffmanCoder
 
