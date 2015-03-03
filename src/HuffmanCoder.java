@@ -64,7 +64,9 @@ public class HuffmanCoder {
 	
 	
 	private byte getWay(ArrayList<Node> nodes){
+		
 		for(int i = 0; i < nodes.size(); ++i){
+			
 			
 			
 		}
@@ -76,19 +78,20 @@ public class HuffmanCoder {
 	
 	private void makeCharRep(Node root){
 		Set<Character> keys = chars.keySet(); 
-		for(Character c : keys){
-			ArrayList<Node> nodes = dfs(root, c);
-			
-			
-		}
+//		for(Character c : keys){
+//			ArrayList<Node> nodes = dfs(root, c);
+//			
+//			
+//		}
 		
 		
 	}
 	
 	
-	private ArrayList<Node> dfs(Node root, char c){
+	private ArrayList<Integer> dfs(Node root, char c){
 		Set<Node> visited = new HashSet<Node>(); //Keeps track of visited
 		ArrayList<Node> route = new ArrayList<Node>();//List to return
+		ArrayList<Integer> intRoute = new ArrayList<Integer>();//int representation of way
 		
 		route.add(root);
 		boolean done = false;
@@ -101,19 +104,24 @@ public class HuffmanCoder {
 				
 				boolean hasUnvisited = false;
 				if(node.getRightChild() != null && !visited.contains(node.getRightChild())){
-						route.add(node.getRightChild());
-						hasUnvisited = true;
+					route.add(node.getRightChild());
+					intRoute.add(1);
+					hasUnvisited = true;
 				}
 				else if(node.getLeftChild() != null && !visited.contains(node.getLeftChild())){
 					route.add(node.getLeftChild());
+					intRoute.add(0);
 					hasUnvisited = true;
 				}
-				if(!hasUnvisited)
+				if(!hasUnvisited){
 					route.remove(route.size()-1);
+					intRoute.remove(intRoute.size()-1);
+				}
+					
 			}
 		}
-		return route;			
-	}
+		return intRoute;			
+	}//dfs
 	
 	
 	//Node
