@@ -29,11 +29,25 @@ public class HuffmanCoder {
 		
 	}
 	
+	/**
+	 * Compresses a string using Huffman-encoding. 
+	 * @param input
+	 * the string to compress.
+	 * @return
+	 * a byte array representing the string.
+	 */
 	public byte[] encode(String input){
 		// TODO
 		return null;
 	}
 	
+	/**
+	 * Decompresses a encoded byte array using Huffman-decoding. 
+	 * @param input
+	 * the byte array to decompress.
+	 * @return
+	 * the decompressed original string.
+	 */
 	public String decode(byte[] input){
 		// TODO
 		return null;
