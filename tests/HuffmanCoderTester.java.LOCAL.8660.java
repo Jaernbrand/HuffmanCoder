@@ -53,19 +53,8 @@ public class HuffmanCoderTester {
 			
 	}
 	
-	public void testByteEncodingFromString(){
-		String input = "allllas";
-		
-		// l = 1, a = 01, s = 00
-		byte oracle[] = {0x7C, 0x20};
-		byte huffArr[] = theHuff.encode(input);
 	
-		assertEquals(oracle.length, huffArr.length);
-		for (int i=0; i < oracle.length; ++i){
-			assertEquals(oracle[i], huffArr[i]);
-		}
-	} // testByteEncodingFromString
-
+	
 }
 
 
