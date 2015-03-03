@@ -26,6 +26,7 @@ public class HuffmanCoder {
 				chars.put(currentChar, 1);
 			}
 		}
+		createNodes();
 		
 	}
 	
