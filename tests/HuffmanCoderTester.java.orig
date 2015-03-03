@@ -53,9 +53,34 @@ public class HuffmanCoderTester {
 			
 	}
 	
+	public void testByteEncodingFromString(){
+		String input = "allllas";
+		
+		// l = 1, a = 01, s = 00
+		byte oracle[] = {0x7C, 0x20};
+		byte huffArr[] = theHuff.encode(input);
 	
-	
+		assertEquals(oracle.length, huffArr.length);
+		for (int i=0; i < oracle.length; ++i){
+			assertEquals(oracle[i], huffArr[i]);
+		}
+	} // testByteEncodingFromString
+<<<<<<< HEAD
+
 }
 
 
 
+=======
+	
+	@Test
+	public void testEncodeAndDecodeString(){
+		String input = "alla gillar rally";
+		HuffmanDecoder theDeHuff = new HuffmanDecoder(); 
+		
+		byte[] compression = theHuff.encode(input);
+		String decompression = theDeHuff.decode(compression);
+		assertEquals( "alla giller rally", decompression);
+	}
+} // HuffmanCoderTester
+>>>>>>> 736f3e3e4be5341440d304f1454e6ecca0ba57b2
