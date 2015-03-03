@@ -8,13 +8,6 @@ import java.io.FileInputStream;
 
 public class HuffmanTester {
 
-	@Test
-	public void testToFewMainArgs(){
-		String[] args = {"-decode", "test.txt"};
-		Huffman.main(args);
-		// TODO
-	}
-
 	private byte[] readByteArray(String fileName){
 		byte[] retArr = null;
 		

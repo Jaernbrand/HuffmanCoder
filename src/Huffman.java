@@ -48,9 +48,9 @@ public class Huffman {
 	}
 
 	public static void main(String[] args){
-		if (args.length < 3 && "-encode".equals(args[0]) ){
+		if (args.length == 3 && "-encode".equals(args[0]) ){
 			encode(args[1], args[2]);
-		} else if (args.length < 3 && "-decode".equals(args[0])){
+		} else if (args.length == 3 && "-decode".equals(args[0])){
 			decode(args[1], args[2]);
 		} else {
 			printHelp();
