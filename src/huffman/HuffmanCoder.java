@@ -114,7 +114,7 @@ public class HuffmanCoder {
 					route.add(node.getLeftChild());
 					intRoute.add(0);
 					hasUnvisited = true;
-				}//specialfall om noden inte har några barn, inte ta bort siffra?
+				}//specialfall om noden inte har nï¿½gra barn, inte ta bort siffra?
 				if(!hasUnvisited){
 					route.remove(route.size()-1);
 					intRoute.remove(intRoute.size()-1);
@@ -124,70 +124,6 @@ public class HuffmanCoder {
 		}
 		return intRoute;			
 	}//dfs
-	
-	
-	//Node
-	private static class Node implements Comparable<Node>{
-		
-		
-		private Character character;
-		private int weight;
-		private Node leftChild;
-		private Node rightChild;
-		
-		Node(Character car, int weight){
-			character = car;
-			this.weight = weight;
-			leftChild = null;
-			rightChild = null;
-		}
-		
-		Node(Character car, int weight, Node leftChild, Node rightChild){
-			this.weight = weight;
-			this.character = car;
-			this.leftChild = leftChild;
-			this.rightChild = rightChild;
-		}
-		
-		int getWeight(){
-			return weight;
-		}
-		
-		void setWeight(int i){
-			weight = i;
-		}
-		
-		Character getChar(){
-			return character;
-		}
-
-		void setChar(char c){
-			character = c;
-		}
-		
-		Node getRightChild(){
-			return rightChild;
-		}
-		
-		void setRightChild(Node right){
-			rightChild = right;
-		}
-		
-		Node getLeftChild(){
-			return leftChild;
-		}
-		
-		void setLeftChild(Node left){
-			leftChild = left;
-		}
-
-		@Override
-		public int compareTo(Node other){
-			return weight - other.getWeight();
-		}
-		
-		
-	}//Node
 	
 	
 	private static class CharToByteRep{
