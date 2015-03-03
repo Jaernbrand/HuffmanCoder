@@ -21,7 +21,7 @@ public class HuffmanDecoder {
 	 * the decompressed original string.
 	 */
 	public String decode(byte[] input){
-		// TODO
+		// TODO set charQuantity till huffTreeRoot.getWeight();
 		return null;
 	}
 	
@@ -49,15 +49,21 @@ public class HuffmanDecoder {
 	private String searchNextNode(byte currBit){
 		// TODO Take one step along the correct path and check if the new node is a leaf.
 		// Return the character in the leaf or null if the node isn't a leaf.
-		if (){
-			
-		} else if (){
-			
+		
+		// TODO Root node behaves different. We need to check the root nod for value if its the only node.
+		if (currBit != 0){
+			currentNode = currentNode.getRightChild();
+		} else if (currBit == 0){
+			currentNode = currentNode.getLeftChild();
 		}
 		
-		charQuantity--;
+		String str = null;
+		if (currentNode.getChar() != null){
+			str = currentNode.getChar().toString();
+			charQuantity--;
+		}
 		
-		return null;
+		return str;
 	}
 	
 } // HuffmanDecoder
