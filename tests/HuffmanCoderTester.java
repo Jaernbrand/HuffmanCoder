@@ -35,24 +35,6 @@ public class HuffmanCoderTester {
 	}
 	
 	@Test
-	public void test(){
-		fail();
-	}
-	
-	@Test
-	public void testDfsTreePath(){
-		HuffmanCoder dustin = new HuffmanCoder();
-		dustin.readString("alla gillar rally");
-		dustin.createNodes();
-		
-		ArrayList<Integer> theWay = dustin.dfs(dustin.buildTree(), 'a');
-		ArrayList<Integer> oracle = new ArrayList<Integer>(Arrays.asList(0,1));
-		
-		for(int i = 0; i < theWay.size(); ++i)
-			assertEquals(theWay.get(i), oracle.get(i));
-			
-	}
-	
 	public void testByteEncodingFromString(){
 		String input = "allllas";
 		
@@ -65,7 +47,35 @@ public class HuffmanCoderTester {
 			assertEquals(oracle[i], huffArr[i]);
 		}
 	} // testByteEncodingFromString
-
+	
+	
+	@Test
+	public void testDfsTreePath(){
+		HuffmanCoder dustin = new HuffmanCoder();
+		dustin.readString("alla gillar rally");
+		
+		ArrayList<Integer> theWay = dustin.dfs(dustin.buildTree(), 'a');
+		ArrayList<Integer> oracle = new ArrayList<Integer>(Arrays.asList(1,0));
+		
+		for(int i = 0; i < theWay.size(); ++i)
+			assertEquals(oracle.get(i),theWay.get(i));
+			
+	}
+	
+	@Test
+	public void testMapForSavingCharAndArraysWithInt(){
+		HuffmanCoder dustin = new HuffmanCoder();
+		dustin.readString("alla gillar rally");
+		
+		ArrayList<Integer> theWay = dustin.dfs(dustin.buildTree(), 'a');
+		ArrayList<Integer> oracle = new ArrayList<Integer>(Arrays.asList(0,1));
+		//saveCharByteRep(/*root*/);
+		for(int i = 0; i < theWay.size(); ++i)
+			assertEquals(oracle.get(i),theWay.get(i));
+			
+	}
+	
+	
 }
 
 
