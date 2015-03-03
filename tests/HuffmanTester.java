@@ -39,12 +39,12 @@ public class HuffmanTester {
 	
 	@Test
 	public void testBytesAreCorrect(){
-		String[] args = {"-encode", "testFiles/testInput0.txt", "testFiles/testOutput0.txt"};
+		String[] args = {"-encode", "testFiles/testInput0.txt", "testFiles/testOutput0.huff"};
 		Huffman.main(args);
 		
 		// l = 1, a = 01, s = 00
 		byte[] oracle = {0x7C, 0x20};
-		byte[] huffArr = readByteArray("testFiles/testOutput0.txt");
+		byte[] huffArr = readByteArray("testFiles/testOutput0.huff");
 		
 		assertEquals(oracle.length, huffArr.length);
 		for (int i=0; i < oracle.length; ++i){

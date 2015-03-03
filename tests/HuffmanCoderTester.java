@@ -45,4 +45,14 @@ public class HuffmanCoderTester {
 			assertEquals(oracle[i], huffArr[i]);
 		}
 	} // testByteEncodingFromString
-}
+	
+	@Test
+	public void testEncodeAndDecodeString(){
+		String input = "alla gillar rally";
+		HuffmanDecoder theDeHuff = new HuffmanDecoder(); 
+		
+		byte[] compression = theHuff.encode(input);
+		String decompression = theDeHuff.decode(compression);
+		assertEquals( "alla giller rally", decompression);
+	}
+} // HuffmanCoderTester
