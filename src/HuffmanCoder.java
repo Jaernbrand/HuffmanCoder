@@ -41,25 +41,38 @@ public class HuffmanCoder {
 			System.out.println(c + ": " + chars.get(c));
 	}
 	
+	private Node buildTree(){
+		
+		while(pQueue.size() != 1){
+			Node node1 = pQueue.poll();
+			Node node2 = pQueue.poll();
+			Node newNode = new Node(null, node1.getWeight() + node2.getWeight(), node1, node2);
+			pQueue.add(newNode);
+		}
+		Node n = pQueue.poll(); 
+		return n;
+	}
+	
 	
 	//Node
 	private static class Node implements Comparable<Node>{
+		
 		
 		private Character character;
 		private int weight;
 		private Node leftChild;
 		private Node rightChild;
 		
-		Node(char character, int weight){
-			this.character = character;
+		Node(Character car, int weight){
+			character = car;
 			this.weight = weight;
 			leftChild = null;
 			rightChild = null;
 		}
 		
-		Node(int weight, char character, Node leftChild, Node rightChild){
+		Node(Character car, int weight, Node leftChild, Node rightChild){
 			this.weight = weight;
-			this.character = character;
+			this.character = car;
 			this.leftChild = leftChild;
 			this.rightChild = rightChild;
 		}
@@ -103,14 +116,6 @@ public class HuffmanCoder {
 		
 	}//Node
 	
-	
-	public static void main(String [] args){	
-		HuffmanCoder theHuff = new HuffmanCoder();
-		theHuff.readString("Hello hello, how are you?!");
-		theHuff.printOccurrences();
-		
-	}
-	
-	
-
 }
+
+
