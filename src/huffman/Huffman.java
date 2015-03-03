@@ -1,6 +1,11 @@
 
 package huffman;
 
+/**
+ * Converterar
+ * @author henrikjarnbrand
+ *
+ */
 public class Huffman {
 	
 	
@@ -20,6 +25,10 @@ public class Huffman {
 				"\t -decode [input file] [output file]");
 	}
 
+	/**
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args){
 		if (args.length < 3 && "-encode".equals(args[0]) ){
 			encode(args[1], args[2]);
