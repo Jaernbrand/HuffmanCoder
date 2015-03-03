@@ -41,6 +41,18 @@ public class HuffmanCoder {
 		return null;
 	}
 	
+	/**
+	 * Decompresses a encoded byte array using Huffman-decoding. 
+	 * @param input
+	 * the byte array to decompress.
+	 * @return
+	 * the decompressed original string.
+	 */
+	public String decode(byte[] input){
+		// TODO
+		return null;
+	}
+	
 	private void createNodes(){
 		Set<Character> keys = chars.keySet();
 		for(Character k : keys)

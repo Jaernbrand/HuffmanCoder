@@ -29,19 +29,7 @@ public class HuffmanCoder {
 		
 	}
 	
-	/**
-	 * Compresses a string using Huffman-encoding. 
-	 * @param input
-	 * the string to compress.
-	 * @return
-	 * a byte array representing the string.
-	 */
-	public byte[] encode(String input){
-		// TODO
-		return null;
-	}
-	
-	private void createNodes(){
+	public void createNodes(){
 		Set<Character> keys = chars.keySet();
 		for(Character k : keys)
 			pQueue.add(new Node(k, chars.get(k)));
