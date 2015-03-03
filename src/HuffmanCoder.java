@@ -56,9 +56,8 @@ public class HuffmanCoder {
 			Node node2 = pQueue.poll();
 			Node newNode = new Node(null, node1.getWeight() + node2.getWeight(), node1, node2);
 			pQueue.add(newNode);
-		}
-		Node n = pQueue.poll(); 
-		return n;
+		} 
+		return pQueue.poll();
 	}
 	
 	
