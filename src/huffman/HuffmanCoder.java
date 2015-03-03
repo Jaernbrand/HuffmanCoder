@@ -1,3 +1,5 @@
+package huffman;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -114,7 +116,7 @@ public class HuffmanCoder {
 					route.add(node.getLeftChild());
 					intRoute.add(0);
 					hasUnvisited = true;
-				}//specialfall om noden inte har n�gra barn, inte ta bort siffra?
+				}//specialfall om noden inte har några barn, inte ta bort siffra?
 				if(!hasUnvisited){
 					route.remove(route.size()-1);
 					intRoute.remove(intRoute.size()-1);

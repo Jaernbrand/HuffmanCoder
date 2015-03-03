@@ -1,10 +1,17 @@
 
+package huffman;
+
+import java.util.Map;
+import java.util.HashMap;
+
 public class HuffmanDecoder {
 
 	public final int BIT_START_POSITION = 7;
 	
 	private int bitPosition = BIT_START_POSITION;
-	private Node huffTree;
+	private Node huffTreeRoot;
+	private Node currentNode;
+	private long charQuantity;
 	
 	/**
 	 * Decompresses a encoded byte array using Huffman-decoding. 
@@ -29,7 +36,7 @@ public class HuffmanDecoder {
 				tmpStr = searchNextNode(currBit);// move in huffTree
 				
 				decrementBitPosition();
-			} while (bitPosition == BIT_START_POSITION);
+			} while (bitPosition != BIT_START_POSITION);
 		}
 		
 		return retStr;
@@ -42,6 +49,14 @@ public class HuffmanDecoder {
 	private String searchNextNode(byte currBit){
 		// TODO Take one step along the correct path and check if the new node is a leaf.
 		// Return the character in the leaf or null if the node isn't a leaf.
+		if (){
+			
+		} else if (){
+			
+		}
+		
+		charQuantity--;
+		
 		return null;
 	}
 	

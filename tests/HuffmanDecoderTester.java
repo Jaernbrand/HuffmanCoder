@@ -7,7 +7,7 @@ import huffman.*;
 public class HuffmanDecoderTester {
 
 	@Test
-	public void test() {
+	public void testSimpleDecode() {
 		fail("Not yet implemented");
 	}
 
