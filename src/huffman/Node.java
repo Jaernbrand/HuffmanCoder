@@ -1,5 +1,6 @@
 package huffman;
 
+<<<<<<< HEAD
 /**
  * 
  * @author Henrik Järnbrand 
@@ -7,7 +8,7 @@ package huffman;
  * @author Tomas Sandberg 
  * tomassandberg86@hotmail.com
  */
-class Node implements Comparable<Node>{
+public class Node implements Comparable<Node>{
 
 	private Character character;
 	private int weight;

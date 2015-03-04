@@ -1,3 +1,14 @@
 /bin
 
 *.classpath
+
+
+
+######################
+# Eclipse
+######################
+
+/src/huffman/HuffmanCoder.java.BACKUP.3904.java
+/src/huffman/HuffmanCoder.java.BASE.3904.java
+/src/huffman/HuffmanCoder.java.LOCAL.3904.java
+/src/huffman/HuffmanCoder.java.REMOTE.3904.java
