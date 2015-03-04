@@ -121,4 +121,17 @@ public class HuffmanTester {
 		assertEquals(original, translated);
 	}
 	
+	@Test
+	public void testCompressAndDecompressLargeFile(){
+		String[] args = {"-encode", "testFiles/LargeTxt.txt", "testFiles/LargeTxt.huff"};
+		Huffman.main(args);
+		
+		String[] args2 = {"-decode", "testFiles/LargeTxt.huff", "testFiles/newLargeTxt.txt"};
+		Huffman.main(args2);
+		
+		String original = readStringFromFile("testFiles/LargeTxt.txt");
+		String translated = readStringFromFile("testFiles/newLargeTxt.txt");
+		assertEquals(original, translated);
+	}
+	
 } // HuffmanTester

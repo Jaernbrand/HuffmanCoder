@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * -decode [input file] [output file]
  * 		Decompresses the inputfile and saves the compressed file as output file.
  * 
- * @author Henrik Järnbrand 
+ * @author Henrik JÃ¤rnbrand 
  * henrikjarnbrand@gmail.com
  * @author Tomas Sandberg 
  * tomassandberg86@hotmail.com
@@ -32,10 +32,10 @@ public class Huffman {
 			FileReader fr = new FileReader(fileName);
 			br = new BufferedReader(fr);
 			
-			int tmpChar = fr.read();
+			int tmpChar = br.read();
 			while(tmpChar != -1){
 				builder.append( (char)tmpChar );
-				tmpChar = fr.read();
+				tmpChar = br.read();
 			}
 			
 		} catch (IOException e){

@@ -7,7 +7,7 @@ import java.util.HashMap;
 /**
  * Decompresses files that have been compressed by HuffmanCoder.
  * 
- * @author Henrik Järnbrand 
+ * @author Henrik JÃ¤rnbrand 
  * henrikjarnbrand@gmail.com
  * @author Tomas Sandberg 
  * tomassandberg86@hotmail.com
@@ -56,6 +56,17 @@ public class HuffmanDecoder {
 		return decompressed.toString();
 	}
 	
+	/**
+	 * Auxiliary method for decode(byte[] input).
+	 * 
+	 * Does the actual decompression of the input-array. 
+	 * 
+	 * @param input
+	 * a byte array containing Huffman-encoded bytes.
+	 * 
+	 * @return
+	 * StringBuilder containing the decompressed input-array.
+	 */
 	private StringBuilder decompress(byte[] input){
 		StringBuilder builder = new StringBuilder();
 		String tmpStr = null;
@@ -79,6 +90,10 @@ public class HuffmanDecoder {
 		return builder;
 	}
 	
+	/**
+	 * Decrements bitPosition by one and sets it to BIT_START_POSITION if 
+	 * bitPosition is less than zero.
+	 */
 	private void decrementBitPosition(){
 		--bitPosition;
 		if (bitPosition < 0){
@@ -87,15 +102,24 @@ public class HuffmanDecoder {
 	}
 	
 	/**
-	 * TODO
+	 * Takes one step along one edge in the Huffman tree and returns the 
+	 * equivalent character as a string if one exists. The step is based on the 
+	 * supplied byte, which only should represent a masked bit. 
+	 * 
 	 * @param currBit
+	 * the bitmask to
+	 *   
 	 * @return
+	 * the string representation of the original decompressed character or null
+	 * if a representation doesn't exist.
 	 */
 	private String searchNextNode(byte currBit){
-		// TODO Root node behaves different. We need to check the root node for value if its the only node.
 		
 		if (currBit != 0){
 			currentNode = currentNode.getRightChild();
+		
+		// The tree will only consist of one node if the the original text 
+		// consisted of solely one type of character.
 		} else if (currBit == 0 && huffTreeRoot.getLeftChild() != null){
 			currentNode = currentNode.getLeftChild();
 		}
