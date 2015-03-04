@@ -7,7 +7,7 @@ import java.util.HashMap;
 /**
  * Decompresses files that have been compressed by HuffmanCoder.
  * 
- * @author Henrik JÃ¤rnbrand 
+ * @author Henrik Järnbrand 
  * henrikjarnbrand@gmail.com
  * @author Tomas Sandberg 
  * tomassandberg86@hotmail.com
@@ -80,7 +80,6 @@ public class HuffmanDecoder {
 	}
 	
 	private void decrementBitPosition(){
-		//bitPosition = (--bitPosition) % 8;
 		--bitPosition;
 		if (bitPosition < 0){
 			bitPosition = BIT_START_POSITION;

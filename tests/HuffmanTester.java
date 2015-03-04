@@ -12,35 +12,6 @@ import java.io.FileInputStream;
 import huffman.*;
 
 public class HuffmanTester {
-
-	private byte[] readByteArray(String fileName){
-		byte[] retArr = null;
-		
-		ByteArrayOutputStream output = null;
-		FileInputStream fi = null;
-		try{
-			output = new ByteArrayOutputStream();
-			fi = new FileInputStream(fileName);
-			
-			int tmp = fi.read();
-			while (tmp != -1){
-				output.write( (byte)tmp );
-				tmp = fi.read();
-			}
-			retArr = output.toByteArray();
-			
-		} catch (IOException e){
-			e.printStackTrace();
-		} finally {
-			try {
-				output.close();
-				fi.close();
-			} catch (IOException ex){
-				ex.printStackTrace();
-			}
-		}
-		return retArr;
-	} // readByteArray
 	
 	private static String readStringFromFile(String fileName){
 		StringBuilder builder = new StringBuilder();
@@ -69,23 +40,8 @@ public class HuffmanTester {
 		}
 		return builder.toString();
 	} // readStringFromFile
+
 	
-	/* Testet verkar inte längre fylla någon funktion.
-	@Test
-	public void testBytesAreCorrect(){
-		String[] args = {"-encode", "testFiles/testInput0.txt", "testFiles/testOutput0.huff"};
-		Huffman.main(args);
-		
-		// l = 1, a = 01, s = 00
-		byte[] oracle = {0x7C, 0x20};
-		byte[] huffArr = readByteArray("testFiles/testOutput0.huff");
-		
-		assertEquals(oracle.length, huffArr.length);
-		for (int i=0; i < oracle.length; ++i){
-			assertEquals(oracle[i], huffArr[i]);
-		}
-	} // testBytesAreCorrect
-	*/
 	
 	@Test
 	public void testCompressAndDecompressFileTestinput0(){

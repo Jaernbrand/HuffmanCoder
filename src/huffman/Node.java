@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 
- * @author Henrik JÃ¤rnbrand 
+ * @author Henrik Järnbrand 
  * henrikjarnbrand@gmail.com
  * @author Tomas Sandberg 
  * tomassandberg86@hotmail.com
