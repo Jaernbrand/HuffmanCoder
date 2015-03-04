@@ -77,9 +77,11 @@ public class HuffmanCoder {
 		int size = 0;
 		
 		Set<Character> keys = charsByteRep.keySet();
-		for(Character c : keys) 
-			size += charsByteRep.get(c).size() * charCount.get(c);
-		
+		for(Character c : keys){ 
+			int byteRep = charsByteRep.get(c).size();
+			size += ((byteRep == 0)? 1 : byteRep) * charCount.get(c);
+		}
+			
 		int diff = size % 8;
 		return (size + (8 - diff)) / 8;
 	}

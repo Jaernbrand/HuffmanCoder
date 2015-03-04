@@ -80,21 +80,26 @@ public class HuffmanDecoder {
 	}
 	
 	private void decrementBitPosition(){
-		//bitPosition = (--bitPosition) % 8;
 		--bitPosition;
 		if (bitPosition < 0){
 			bitPosition = BIT_START_POSITION;
 		}
 	}
 	
+	/**
+	 * TODO
+	 * @param currBit
+	 * @return
+	 */
 	private String searchNextNode(byte currBit){
 		// TODO Root node behaves different. We need to check the root node for value if its the only node.
+		
 		if (currBit != 0){
 			currentNode = currentNode.getRightChild();
-		} else if (currBit == 0){
+		} else if (currBit == 0 && huffTreeRoot.getLeftChild() != null){
 			currentNode = currentNode.getLeftChild();
 		}
-		
+	
 		String str = null;
 		if (currentNode.getChar() != null){
 			str = currentNode.getChar().toString();

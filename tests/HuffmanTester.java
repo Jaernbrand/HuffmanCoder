@@ -12,35 +12,6 @@ import java.io.FileInputStream;
 import huffman.*;
 
 public class HuffmanTester {
-
-	private byte[] readByteArray(String fileName){
-		byte[] retArr = null;
-		
-		ByteArrayOutputStream output = null;
-		FileInputStream fi = null;
-		try{
-			output = new ByteArrayOutputStream();
-			fi = new FileInputStream(fileName);
-			
-			int tmp = fi.read();
-			while (tmp != -1){
-				output.write( (byte)tmp );
-				tmp = fi.read();
-			}
-			retArr = output.toByteArray();
-			
-		} catch (IOException e){
-			e.printStackTrace();
-		} finally {
-			try {
-				output.close();
-				fi.close();
-			} catch (IOException ex){
-				ex.printStackTrace();
-			}
-		}
-		return retArr;
-	} // readByteArray
 	
 	private static String readStringFromFile(String fileName){
 		StringBuilder builder = new StringBuilder();
@@ -123,6 +94,45 @@ public class HuffmanTester {
 		
 		String original = readStringFromFile("testFiles/Cats.txt");
 		String translated = readStringFromFile("testFiles/newCats.txt");
+		assertEquals(original, translated);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testCompressAndDecompressFileOneNewline(){
+		String[] args = {"-encode", "testFiles/OneNewLine.txt", "testFiles/OneNewLine.huff"};
+		Huffman.main(args);
+		
+		String[] args2 = {"-decode", "testFiles/OneNewLine.huff", "testFiles/newOneNewLine.txt"};
+		Huffman.main(args2);
+		
+		String original = readStringFromFile("testFiles/OneNewLine.txt");
+		String translated = readStringFromFile("testFiles/newOneNewLine.txt");
+		assertEquals(original, translated);
+	}
+	
+	@Test
+	public void testCompressAndDecompressFileMultipleNewlines(){
+		String[] args = {"-encode", "testFiles/MultipleNewLines.txt", "testFiles/MultipleNewLines.huff"};
+		Huffman.main(args);
+		
+		String[] args2 = {"-decode", "testFiles/MultipleNewLines.huff", "testFiles/newMultipleNewLines.txt"};
+		Huffman.main(args2);
+		
+		String original = readStringFromFile("testFiles/MultipleNewLines.txt");
+		String translated = readStringFromFile("testFiles/newMultipleNewLines.txt");
+		assertEquals(original, translated);
+	}
+	
+	@Test
+	public void testCompressAndDecompressFileOnlyOneLetter(){
+		String[] args = {"-encode", "testFiles/OnlyOneLetter.txt", "testFiles/OnlyOneLetter.huff"};
+		Huffman.main(args);
+		
+		String[] args2 = {"-decode", "testFiles/OnlyOneLetter.huff", "testFiles/newOnlyOneLetter.txt"};
+		Huffman.main(args2);
+		
+		String original = readStringFromFile("testFiles/OnlyOneLetter.txt");
+		String translated = readStringFromFile("testFiles/newOnlyOneLetter.txt");
 		assertEquals(original, translated);
 	}
 	
