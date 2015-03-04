@@ -61,6 +61,7 @@ public class HuffmanDecoder {
 		String tmpStr = null;
 		
 		bitPosition = BIT_START_POSITION;
+		currentNode = huffTreeRoot;
 		
 		for (int i=0; i < input.length && charQuantity > 0; ++i){
 			do{
@@ -94,6 +95,7 @@ public class HuffmanDecoder {
 		if (currentNode.getChar() != null){
 			str = currentNode.getChar().toString();
 			charQuantity--;
+			currentNode = huffTreeRoot;
 		}
 		
 		return str;

@@ -32,9 +32,10 @@ public class Huffman {
 			FileReader fr = new FileReader(fileName);
 			br = new BufferedReader(fr);
 			
-			int tmpChar = br.read();
+			int tmpChar = fr.read();
 			while(tmpChar != -1){
 				builder.append( (char)tmpChar );
+				tmpChar = fr.read();
 			}
 			
 		} catch (IOException e){

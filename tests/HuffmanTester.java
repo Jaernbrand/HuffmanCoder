@@ -53,6 +53,7 @@ public class HuffmanTester {
 			int tmpChar = br.read();
 			while(tmpChar != -1){
 				builder.append( (char)tmpChar );
+				tmpChar = br.read();
 			}
 			
 		} catch (IOException e){

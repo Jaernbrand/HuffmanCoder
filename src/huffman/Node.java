@@ -1,5 +1,7 @@
 package huffman;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author Henrik Järnbrand 
@@ -7,8 +9,11 @@ package huffman;
  * @author Tomas Sandberg 
  * tomassandberg86@hotmail.com
  */
-public class Node implements Comparable<Node>{
+public class Node implements Serializable, Comparable<Node>{
 
+	// Default value for serialVersionUID
+	private static final long serialVersionUID = 1L;
+	
 	private Character character;
 	private int weight;
 	private Node leftChild;
