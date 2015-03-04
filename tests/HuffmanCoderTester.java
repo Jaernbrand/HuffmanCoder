@@ -52,7 +52,7 @@ public class HuffmanCoderTester {
 	
 	
 	@Test
-	public void testDfsTreePath(){
+	public void testDfsTreePathForChars(){
 		HuffmanCoder dustin = new HuffmanCoder();
 		dustin.readString("alla gillar rally");
 		
