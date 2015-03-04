@@ -36,7 +36,6 @@ public class HuffmanCoder {
 			}
 		}
 		createNodes();
-		
 	}
 	
 	/**
@@ -65,13 +64,7 @@ public class HuffmanCoder {
 	protected HashMap<Character, Integer> getOccurrences(){
 		return new HashMap<Character, Integer>(charCount);
 	}
-		
-	private void printOccurrences(){
-		Set<Character> keys = charCount.keySet();
-		System.out.println("char | occurrences");
-		for(Character c : keys)
-			System.out.println(c + ": " + charCount.get(c));
-	}
+
 	
 	public Node buildTree(){
 		
@@ -84,7 +77,6 @@ public class HuffmanCoder {
 		
 		return pQueue.poll();
 	}
-	
 	
 	
 	public void saveCharByteRep(Node root){
