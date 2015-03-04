@@ -6,12 +6,15 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * Compresses or decompresses textfiles using Huffman coding.
+ * Compresses or decompresses textfiles using Huffman coding. Huffman takes three
+ * arguments, (1) a flag telling Huffman whether to compress or decompress, 
+ * (2) the name of a file to read input from and (3) the name of a file to save
+ * the output to.
  * 
- * -encode [input file] [output file]
+ * Huffman -encode [input file] [output file]
  * 		Compresses the inputfile and saves the compressed file as output file.
  * 
- * -decode [input file] [output file]
+ * Huffman -decode [input file] [output file]
  * 		Decompresses the inputfile and saves the compressed file as output file.
  * 
  * @author Henrik Järnbrand 

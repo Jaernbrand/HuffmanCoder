@@ -7,17 +7,7 @@ import huffman.*;
 public class HuffmanDecoderTester {
 
 	@Test
-	public void testSimpleDecode() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testDecodeConsistingOfOneChar() {
-		fail("Not yet implemented");
-	}
-	
-	@Test
-	public void testDecodePaddedArray() {
+	public void test() {
 		fail("Not yet implemented");
 	}
 }

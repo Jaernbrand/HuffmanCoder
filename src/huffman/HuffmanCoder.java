@@ -11,6 +11,7 @@ import java.util.Queue;
 import java.util.Set;
 
 /**
+ * Compresses text using Huffman's algorithm. The compressed text is saved as bytes. 
  * 
  * @author Henrik Järnbrand 
  * henrikjarnbrand@gmail.com

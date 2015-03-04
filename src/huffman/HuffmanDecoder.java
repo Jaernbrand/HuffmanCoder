@@ -2,7 +2,7 @@
 package huffman;
 
 /**
- * Decompresses files that have been compressed by HuffmanCoder.
+ * Decompresses bytes that have been compressed by HuffmanCoder.
  * 
  * @author Henrik Järnbrand 
  * henrikjarnbrand@gmail.com
