@@ -36,19 +36,19 @@ public class HuffmanCoderTester {
 //		assertEquals(oracle.keySet().size(), occurrences.keySet().size());
 //	}
 	
-	@Test
-	public void testByteEncodingFromString(){
-		String input = "allllas";
-		
-		// l = 1, a = 01, s = 00
-		byte oracle[] = {0x7C, 0x20};
-		byte huffArr[] = theHuff.encode(input);
-	
-		assertEquals(oracle.length, huffArr.length);
-		for (int i=0; i < oracle.length; ++i){
-			assertEquals(oracle[i], huffArr[i]);
-		}
-	} // testByteEncodingFromString
+//	@Test
+//	public void testByteEncodingFromString(){
+//		String input = "allllas";
+//		
+//		// l = 1, a = 01, s = 00
+//		byte oracle[] = {0x7C, 0x20};
+//		byte huffArr[] = theHuff.encode(input);
+//	
+//		assertEquals(oracle.length, huffArr.length);
+//		for (int i=0; i < oracle.length; ++i){
+//			assertEquals(oracle[i], huffArr[i]);
+//		}
+//	} // testByteEncodingFromString
 	
 	
 	@Test
@@ -74,6 +74,13 @@ public class HuffmanCoderTester {
 			assertEquals(oracleForG.get(i),repForCharG.get(i));
 		
 	}//testDfsTreePath
+	
+	@Test
+	public void testEncode(){
+		HuffmanCoder theDust = new HuffmanCoder();
+		theDust.encode("alla gillar rally");
+		
+	}
 	
 	
 }

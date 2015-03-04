@@ -43,13 +43,34 @@ public class HuffmanCoder {
 
 		for(int i = 0; i < text.length(); ++i){
 			char currentChar = text.charAt(i);
-			if(charCount.get(currentChar) != null){ 			//snabbare än containsKey
+			if(charCount.get(currentChar) != null){
 				charCount.put(currentChar, charCount.get(currentChar) + 1);
 			}else{
 				charCount.put(currentChar, 1);
 			}
 		}
 		createNodes();
+	}
+	
+	
+	/**
+	 * Counts the number of bytes needed in the encoded array by multiplying
+	 * every chars arraylist.size() with the same chars frequency number.
+	 * The modulo operation tells us the final size that is needed to fit every byte since
+	 * you can't have uneven bits.
+	 * 
+	 * @return
+	 * An int representing the number of bytes needed to store this byte array.
+	 */
+	private int numbOfBytesToStore(){
+		int size = 0;
+		
+		Set<Character> keys = charsByteRep.keySet();
+		for(Character c : keys) 
+			size += charsByteRep.get(c).size() * charCount.get(c);
+		
+		int diff = size % 8;
+		return (size + (8 - diff)) / 8;
 	}
 	
 	
@@ -61,8 +82,34 @@ public class HuffmanCoder {
 	 * a byte array representing the string.
 	 */
 	public byte[] encode(String input){
-		// TODO
-		return null;
+		readString(input);
+		buildTree();
+		
+		byte[] encodedBytes = new byte[numbOfBytesToStore()];
+		
+		int currentByteIndex = 0;
+		int bitsLeft = 7;
+		
+		for(int i = 0; i < input.length(); ++i){  //loops over chars in input
+			char current = input.charAt(i);
+			
+			ArrayList<Integer> intRep = charsByteRep.get(current);
+			for(int j = 0; j < intRep.size(); ++j){ //loops over chars arrayList 
+				if(bitsLeft < 0){
+					currentByteIndex++;
+					bitsLeft = 7;					
+				}
+				byte b = encodedBytes[currentByteIndex];
+				
+				if(intRep.get(j) == 1){
+					byte mask = 1;
+					mask = (byte) (mask << bitsLeft);
+					b = (byte) (b | mask);
+				}
+				bitsLeft--;
+			}
+		}
+		return encodedBytes;
 	}
 	
 	
@@ -90,6 +137,7 @@ public class HuffmanCoder {
 	
 	/**
 	 * Builds the tree according to the Huffman algorithm. 
+	 * After building tree, calls saveCharByteRep().
 	 * @return 
 	 * the root of the tree.
 	 */
@@ -101,13 +149,14 @@ public class HuffmanCoder {
 			Node newNode = new Node(null, node1.getWeight() + node2.getWeight(), node1, node2);
 			pQueue.add(newNode);
 		}
-		
-		return pQueue.poll();
+		Node root = pQueue.poll();
+		saveCharByteRep(root);
+		return root;
 	}
 	
 	/**
 	 * Uses the root of the tree in a dfs-search to find the integer representation of every
-	 * char in the tree. After search, saves it in the map "charsByteRep.
+	 * char in the tree. After search, saves it in the map charsByteRep.
 	 * @param root
 	 * The root of the tree.
 	 */
