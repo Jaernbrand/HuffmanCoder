@@ -20,7 +20,9 @@ public class HuffmanCoder {
 
 	private Map<Character,Integer> charCount; 
 	private Map<Character,ArrayList<Integer>> charsByteRep; 
-	private Queue<Node> pQueue; 
+	private Queue<Node> pQueue;
+	
+	private Node latestTree;
 	
 	public HuffmanCoder(){
 		charCount = new HashMap<Character,Integer>();
@@ -28,6 +30,15 @@ public class HuffmanCoder {
 		charsByteRep = new HashMap<Character, ArrayList<Integer>>();
 	}
 	
+	/**
+	 * Gets the last Huffman tree that was used for compression.
+	 * 
+	 * @return
+	 * root node of the Huffman tree.
+	 */
+	public Node getLatestTree(){
+		return latestTree;
+	}
 	
 	/**
 	 * Takes an input string and counts every chars frequency in that particular string.
@@ -83,7 +94,7 @@ public class HuffmanCoder {
 	 */
 	public byte[] encode(String input){
 		readString(input);
-		buildTree();
+		latestTree = buildTree();
 		
 		byte[] encodedBytes = new byte[numbOfBytesToStore()];
 		

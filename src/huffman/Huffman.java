@@ -133,7 +133,7 @@ public class Huffman {
 		byte[] output = huff.encode(input);
 		
 		ArrayList<Object> objList = new ArrayList<Object>();
-		objList.add(TREE_INDEX, huff.getTree() );
+		objList.add(TREE_INDEX, huff.getLatestTree() );
 		objList.add(BYTES_INDEX, output);
 		
 		printObjectList(objList, outputFile);
@@ -167,9 +167,9 @@ public class Huffman {
 	} // printHelp
 
 	public static void main(String[] args){
-		if (args.length < 3 && "-encode".equals(args[0]) ){
+		if (args.length == 3 && "-encode".equals(args[0]) ){
 			encode(args[1], args[2]);
-		} else if (args.length < 3 && "-decode".equals(args[0])){
+		} else if (args.length == 3 && "-decode".equals(args[0])){
 			decode(args[1], args[2]);
 		} else {
 			printHelp();
