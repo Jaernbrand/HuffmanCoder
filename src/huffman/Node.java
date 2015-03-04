@@ -1,6 +1,5 @@
 package huffman;
 
-<<<<<<< HEAD
 /**
  * 
  * @author Henrik Järnbrand 
