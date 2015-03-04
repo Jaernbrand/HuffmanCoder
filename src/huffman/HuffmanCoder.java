@@ -116,6 +116,7 @@ public class HuffmanCoder {
 					byte mask = 1;
 					mask = (byte) (mask << bitsLeft);
 					b = (byte) (b | mask);
+					encodedBytes[currentByteIndex] = b;
 				}
 				bitsLeft--;
 			}
