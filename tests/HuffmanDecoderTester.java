@@ -15,4 +15,9 @@ public class HuffmanDecoderTester {
 	public void testDecodeConsistingOfOneChar() {
 		fail("Not yet implemented");
 	}
+	
+	@Test
+	public void testDecodePaddedArray() {
+		fail("Not yet implemented");
+	}
 }

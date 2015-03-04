@@ -1,5 +1,12 @@
 package huffman;
 
+/**
+ * 
+ * @author Henrik Järnbrand 
+ * henrikjarnbrand@gmail.com
+ * @author Tomas Sandberg 
+ * tomassandberg86@hotmail.com
+ */
 class Node implements Comparable<Node>{
 
 	private Character character;

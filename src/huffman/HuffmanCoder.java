@@ -9,6 +9,13 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Set;
 
+/**
+ * 
+ * @author Henrik Järnbrand 
+ * henrikjarnbrand@gmail.com
+ * @author Tomas Sandberg 
+ * tomassandberg86@hotmail.com
+ */
 public class HuffmanCoder {
 
 	private Map<Character,Integer> charCount; 
