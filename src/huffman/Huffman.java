@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * -decode [input file] [output file]
  * 		Decompresses the inputfile and saves the compressed file as output file.
  * 
- * @author Henrik JÃ¤rnbrand 
+ * @author Henrik Järnbrand 
  * henrikjarnbrand@gmail.com
  * @author Tomas Sandberg 
  * tomassandberg86@hotmail.com

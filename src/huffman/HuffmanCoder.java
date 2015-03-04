@@ -3,6 +3,7 @@ package huffman;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -19,7 +20,7 @@ import java.util.Set;
 public class HuffmanCoder {
 
 	private Map<Character,Integer> charCount; 
-	private Map<Character,ArrayList<Integer>> charsByteRep; 
+	private Map<Character,LinkedList<Integer>> charsByteRep; 
 	private Queue<Node> pQueue;
 	
 	private Node latestTree;
@@ -27,7 +28,7 @@ public class HuffmanCoder {
 	public HuffmanCoder(){
 		charCount = new HashMap<Character,Integer>();
 		pQueue = new PriorityQueue<Node>();
-		charsByteRep = new HashMap<Character, ArrayList<Integer>>();
+		charsByteRep = new HashMap<Character, LinkedList<Integer>>();
 	}
 	
 	/**
@@ -106,7 +107,7 @@ public class HuffmanCoder {
 		for(int i = 0; i < input.length(); ++i){  //loops over chars in input
 			char current = input.charAt(i);
 			
-			ArrayList<Integer> intRep = charsByteRep.get(current);
+			LinkedList<Integer> intRep = charsByteRep.get(current);
 			for(int j = 0; j < intRep.size(); ++j){ //loops over chars arrayList 
 				if(bitsLeft < 0){
 					currentByteIndex++;
@@ -176,7 +177,7 @@ public class HuffmanCoder {
 	 */
 	public void saveCharByteRep(Node root){
 		for(Character c : charCount.keySet()){
-			ArrayList<Integer> charByte = dfs(root, c);
+			LinkedList<Integer> charByte = dfs(root, c);
 			charsByteRep.put(c, charByte);
 		}
 	}
@@ -192,10 +193,10 @@ public class HuffmanCoder {
 	 * @return 
 	 * An ArrayList<Integer> representing the binary code for the char that is passed as an arg.
 	 */
-	public ArrayList<Integer> dfs(Node root, char c){
+	public LinkedList<Integer> dfs(Node root, char c){
 		Set<Node> visited = new HashSet<Node>(); 
 		ArrayList<Node> route = new ArrayList<Node>();
-		ArrayList<Integer> intRoute = new ArrayList<Integer>();
+		LinkedList<Integer> intRoute = new LinkedList<Integer>();
 		
 		route.add(root);
 		boolean done = false;
