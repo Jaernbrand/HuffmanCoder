@@ -1,9 +1,6 @@
 
 package huffman;
 
-import java.util.Map;
-import java.util.HashMap;
-
 /**
  * Decompresses files that have been compressed by HuffmanCoder.
  * 

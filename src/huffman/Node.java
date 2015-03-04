@@ -3,6 +3,7 @@ package huffman;
 import java.io.Serializable;
 
 /**
+ * Node used to construct Huffman-trees.
  * 
  * @author Henrik Järnbrand 
  * henrikjarnbrand@gmail.com
@@ -14,8 +15,13 @@ public class Node implements Serializable, Comparable<Node>{
 	// Default value for serialVersionUID
 	private static final long serialVersionUID = 1L;
 	
+	// Is null if the node isn't a leaf.
 	private Character character;
+	
+	// The weight is the same as the sum of all occurrences of all characters
+	// in the subtree, this node included. 
 	private int weight;
+	
 	private Node leftChild;
 	private Node rightChild;
 

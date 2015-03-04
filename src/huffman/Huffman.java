@@ -127,6 +127,16 @@ public class Huffman {
 		return savedList;
 	} // readObjectList
 	
+	/**
+	 * Reads the contents of a textfile and compresses it using Huffman-coding.
+	 * The encoded information is put in the supplied output-file. 
+	 * 
+	 * @param inputFile
+	 * the name of the textfile to compress.
+	 * 
+	 * @param outputFile
+	 * the name of the file to put the compressed information.
+	 */
 	private static void encode(String inputFile, String outputFile){
 		HuffmanCoder huff = new HuffmanCoder();
 		
@@ -140,6 +150,16 @@ public class Huffman {
 		printObjectList(objList, outputFile);
 	} // encode
 	
+	/**
+	 * Reads the contents of a compressed inputFile and decompresses it. 
+	 * The decompressed information is but in the supplied output file.
+	 * 
+	 * @param inputFile
+	 * the name of the Huffman-compressed file to decompress.
+	 * 
+	 * @param outputFile
+	 * the name of the file to put the decompressed information. 
+	 */
 	private static void decode(String inputFile, String outputFile){
 		HuffmanDecoder deHuff = new HuffmanDecoder();
 		
