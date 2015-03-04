@@ -1,6 +1,6 @@
 package huffman;
 
-class Node implements Comparable<Node>{
+public class Node implements Comparable<Node>{
 
 	private Character character;
 	private int weight;

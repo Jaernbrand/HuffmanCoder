@@ -21,6 +21,13 @@ public class HuffmanCoder {
 		charsByteRep = new HashMap<Character, ArrayList<Integer>>();
 	}
 	
+	/**
+	 * Takes an input string and counts every chars frequency in that particular string.
+	 * After counting, calls createNodes() which creates the nodes that are needed to build tree.
+	 * @param text
+	 * The string that is to be analyzed.
+	 */
+	
 	public void readString(String text){
 		if(text == null)
 			throw new NullPointerException("Input text can't be null");
@@ -50,6 +57,11 @@ public class HuffmanCoder {
 		return null;
 	}
 	
+	/**
+	 * After the charaters has been counted, createNodes() creates the nodes
+	 * that are needed to run part of the Huffman-Algorithm, buildTree().
+	 * 
+	 */
 	private void createNodes(){
 		Set<Character> keys = charCount.keySet();
 		for(Character k : keys)
@@ -65,6 +77,11 @@ public class HuffmanCoder {
 		return new HashMap<Character, Integer>(charCount);
 	}
 
+	/**
+	 * Builds the tree according to the Huffman algorithm. 
+	 * @return 
+	 * the root of the tree.
+	 */
 	
 	public Node buildTree(){
 		
@@ -86,11 +103,21 @@ public class HuffmanCoder {
 		}
 	}
 	
+	/**
+	 * DFS-DepthFirstSearch, Highly ineffective in this scenario, probably should run bfs instead.
+	 * 
+	 * @param root 
+	 * root of the tree, passed after buildTree() has been executed.
+	 * @param c 
+	 * the char that we want to find the path to.
+	 * @return 
+	 * An ArrayList<Integer> representing the binary code for the char that is passed as an arg.
+	 */
 	
 	public ArrayList<Integer> dfs(Node root, char c){
-		Set<Node> visited = new HashSet<Node>(); //Keeps track of visited
-		ArrayList<Node> route = new ArrayList<Node>();//List to return
-		ArrayList<Integer> intRoute = new ArrayList<Integer>();//int representation of way
+		Set<Node> visited = new HashSet<Node>(); 
+		ArrayList<Node> route = new ArrayList<Node>();
+		ArrayList<Integer> intRoute = new ArrayList<Integer>();
 		
 		route.add(root);
 		boolean done = false;
