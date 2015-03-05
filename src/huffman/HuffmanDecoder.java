@@ -22,7 +22,7 @@ public class HuffmanDecoder {
 	 * Sets the root of the Huffman tree used for decompression.
 	 * 
 	 * @param root
-	 * the root of the new Hufman tree.
+	 * the root of the new Huffman tree.
 	 */
 	public void setHuffTreeRoot(Node root){
 		if (root == null){
