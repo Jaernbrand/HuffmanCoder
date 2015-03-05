@@ -196,6 +196,7 @@ public class HuffmanCoder {
 			if(node.getChar() != null ){
 				charsByteRep.put(node.getChar(), new LinkedList<Integer>(intRoute));
 				route.remove(route.size()-1);
+
 				if(!intRoute.isEmpty())			//If there's only one node, e.g. '\n'
 					intRoute.remove(intRoute.size()-1);
 			}else{
@@ -212,11 +213,12 @@ public class HuffmanCoder {
 				}
 				if(!hasUnvisited){ 
 					route.remove(route.size()-1);
-					if(!intRoute.isEmpty()) 				//intRoute is emptied before the rootnode 
-						intRoute.remove(intRoute.size()-1); //is removed, which ends the loop
-				}
-			}
-		}	
+
+					if(!intRoute.isEmpty()) 				//intRoute is emptied before the rootnode
+						intRoute.remove(intRoute.size()-1);	//is removed, which ends the loop
+				} // inner if
+			} // outer if
+		} // while	
 	}//buildCodeTable
 	
 	
