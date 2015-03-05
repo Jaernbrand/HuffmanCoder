@@ -143,17 +143,6 @@ public class HuffmanCoder {
 		for(Character k : keys)
 			pQueue.add(new Node(k, charCount.get(k)));
 	}
-		
-	
-	/**
-	 * Only for testing purposes. 
-	 * @return 
-	 * A list that is a binary representation of the char.
-	 */
-	protected LinkedList<Integer> getIntegerRepresentation(char c){
-		LinkedList<Integer> i = charsByteRep.get(c); 
-		return i;
-	}
 
 	
 	/**
