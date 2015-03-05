@@ -203,7 +203,10 @@ public class HuffmanCoder {
 			if(node.getChar() != null ){
 				charsByteRep.put(node.getChar(), new LinkedList<Integer>(intRoute));
 				route.remove(route.size()-1);
-				intRoute.remove(intRoute.size()-1);
+				if ( !intRoute.isEmpty() ){
+					intRoute.remove(intRoute.size()-1);
+				}
+	
 			}else{
 				boolean hasUnvisited = false;
 				if(node.getLeftChild() != null && !visited.contains(node.getLeftChild())){
@@ -220,9 +223,9 @@ public class HuffmanCoder {
 					route.remove(route.size()-1);
 					if(!intRoute.isEmpty()) //emptied before the root node is removed, which ends the loop
 						intRoute.remove(intRoute.size()-1);
-				}
-			}
-		}	
+				} // inner if
+			} // outer if
+		} // while	
 	}//buildCodeTable
 	
 	

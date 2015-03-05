@@ -95,6 +95,18 @@ public class HuffmanTester {
 		assertEquals(original, translated);
 	}
 	
+	public void testCompressAndDecompressFileOneNewline2(){
+		String[] args = {"-encode", "testFiles/OneNewLine2.txt", "testFiles/OneNewLine2.huff"};
+		Huffman.main(args);
+		
+		String[] args2 = {"-decode", "testFiles/OneNewLine2.huff", "testFiles/newOneNewLine2.txt"};
+		Huffman.main(args2);
+		
+		String original = readStringFromFile("testFiles/OneNewLine2.txt");
+		String translated = readStringFromFile("testFiles/newOneNewLine2.txt");
+		assertEquals(original, translated);
+	}
+	
 	@Test
 	public void testCompressAndDecompressFileMultipleNewlines(){
 		String[] args = {"-encode", "testFiles/MultipleNewLines.txt", "testFiles/MultipleNewLines.huff"};
@@ -121,6 +133,7 @@ public class HuffmanTester {
 		assertEquals(original, translated);
 	}
 	
+	/*
 	@Test
 	public void testCompressAndDecompressLargeFile(){
 		String[] args = {"-encode", "testFiles/LargeTxt.txt", "testFiles/LargeTxt.huff"};
@@ -133,5 +146,6 @@ public class HuffmanTester {
 		String translated = readStringFromFile("testFiles/newLargeTxt.txt");
 		assertEquals(original, translated);
 	}
+	*/
 	
 } // HuffmanTester
