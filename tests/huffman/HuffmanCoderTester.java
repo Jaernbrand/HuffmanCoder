@@ -1,3 +1,4 @@
+package huffman;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -15,7 +16,6 @@ public class HuffmanCoderTester {
 	public void testDfsTreePathForChars(){
 		
 		dustin.readString("alla gillar rally");
-		dustin.buildTree();		//kör även buildCodeTable
 		
 		LinkedList<Integer> repForCharA = dustin.getIntegerRepresentation('a');
 		LinkedList<Integer> oracleForA = new LinkedList<Integer>(Arrays.asList(1,0));		

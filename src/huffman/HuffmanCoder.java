@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -34,7 +33,6 @@ public class HuffmanCoder {
 	
 	/**
 	 * Gets the last Huffman tree that was used for compression.
-	 * 
 	 * @return
 	 * root node of the Huffman tree.
 	 */
@@ -42,9 +40,11 @@ public class HuffmanCoder {
 		return latestTree;
 	}
 	
+	
 	/**
 	 * Takes an input string and counts every chars frequency in that particular string.
-	 * After counting, calls createNodes() which creates the nodes that are needed to build tree.
+	 * After counting, calls createNodes() and buildTree().
+	 * 
 	 * @param text
 	 * The string that is to be analyzed.
 	 */
@@ -63,17 +63,17 @@ public class HuffmanCoder {
 			}
 		}
 		createNodes();
-	}
+		buildTree();
+	}//readString
 	
 	
 	/**
-	 * Counts the number of bytes needed in the encoded array by multiplying
-	 * every chars arraylist.size() with the same chars frequency number.
-	 * The modulo operation tells us the final size that is needed to fit every byte since
-	 * you can't have uneven bits.
+	 * Calculates the number of bytes needed in the encoded array by multiplying
+	 * every chars list.size() with the same chars frequency number.
+	 * The modulo operation gives the number of bytes that is needed to fit every bit.
 	 * 
 	 * @return
-	 * An int representing the number of bytes needed to store this byte array.
+	 * An int representing the number of bytes needed to store the encoded bits.
 	 */
 	private int numbOfBytesToStore(){
 		int size = 0;
@@ -81,20 +81,21 @@ public class HuffmanCoder {
 		Set<Character> keys = charsByteRep.keySet();
 		for(Character c : keys){ 
 			int byteRep = charsByteRep.get(c).size();
-			size += ((byteRep == 0)? 1 : byteRep) * charCount.get(c);
-		}
+			size += ((byteRep == 0)? 1 : byteRep) * charCount.get(c); //If there's only one char
+		}															  //e.g. '\n',  multiply by one
 			
 		int diff = size % 8;
 		return (size + (8 - diff)) / 8;
-	}
+		
+	}//numbOfBytesToStore
 	
 	
 	/**
-	 * Compresses a string using Huffman-encoding. 
+	 * Compresses a string using Huffman's algorithm. 
 	 * @param input
-	 * the string to compress.
+	 * The string to compress.
 	 * @return
-	 * a byte array representing the string.
+	 * A byte array representing the string.
 	 */
 	public byte[] encode(String input){
 		readString(input);
@@ -126,49 +127,39 @@ public class HuffmanCoder {
 			}
 		}
 		return encodedBytes;
-	}
+	}//encode
 	
 	
 	/**
-	 * After the charaters has been counted, createNodes() creates the nodes
-	 * that are needed to run part of the Huffman-Algorithm, buildTree().
-	 * 
+	 * Creates the nodes that are needed to build the tree. 
+	 * Called by readString(). 
+	 * Nodes are saved in the PriorityQueue pQueue.
 	 */
 	private void createNodes(){
 		Set<Character> keys = charCount.keySet();
 		for(Character k : keys)
 			pQueue.add(new Node(k, charCount.get(k)));
 	}
-	
-	
-	/**
-	 * Only for testing purposes. 
-	 * @return 
-	 * a copy of the map containing the number of occurrences for each character.
-	 */
-	protected HashMap<Character, Integer> getOccurrences(){
-		return new HashMap<Character, Integer>(charCount);
-	}
-	
+		
 	
 	/**
 	 * Only for testing purposes. 
 	 * @return 
-	 * returns a list that is a binary representation of the char.
+	 * A list that is a binary representation of the char.
 	 */
-	public LinkedList<Integer> getIntegerRepresentation(char c){
+	protected LinkedList<Integer> getIntegerRepresentation(char c){
 		LinkedList<Integer> i = charsByteRep.get(c); 
 		return i;
 	}
 
 	
 	/**
-	 * Builds the tree according to the Huffman algorithm. 
-	 * After building tree, calls saveCharByteRep().
+	 * Builds the tree according to Huffman's algorithm. 
+	 * After building tree, calls buildCodeTable().
 	 * @return 
-	 * the root of the tree.
+	 * The root of the tree.
 	 */
-	public Node buildTree(){
+	private Node buildTree(){
 		
 		while(pQueue.size() != 1){
 			Node node1 = pQueue.poll();
@@ -179,18 +170,20 @@ public class HuffmanCoder {
 		Node root = pQueue.poll();
 		buildCodeTable(root);
 		return root;
-	}
+		
+	}//buildTree
 	
 
 	/**
-	 * Builds a map of chars as keys with a list of integers as value. The list is an integer representation
-	 * of the binary code. The tree is traversed using DFS, first going left, then right. 
+	 * Builds a map of chars as keys with a list of integers as value. The list is an integer 
+	 * representation of the binary code. The tree is traversed using DFS, first going left,  
+	 * then right.
 	 * 
 	 * @param root 
 	 * root of the tree, passed after buildTree() has been executed.
 	 * 
 	 */
-	public void buildCodeTable(Node root){
+	private void buildCodeTable(Node root){
 		Set<Node> visited = new HashSet<Node>(); 
 		ArrayList<Node> route = new ArrayList<Node>();
 		LinkedList<Integer> intRoute = new LinkedList<Integer>();
@@ -203,7 +196,8 @@ public class HuffmanCoder {
 			if(node.getChar() != null ){
 				charsByteRep.put(node.getChar(), new LinkedList<Integer>(intRoute));
 				route.remove(route.size()-1);
-				intRoute.remove(intRoute.size()-1);
+				if(!intRoute.isEmpty())			//If there's only one node, e.g. '\n'
+					intRoute.remove(intRoute.size()-1);
 			}else{
 				boolean hasUnvisited = false;
 				if(node.getLeftChild() != null && !visited.contains(node.getLeftChild())){
@@ -218,8 +212,8 @@ public class HuffmanCoder {
 				}
 				if(!hasUnvisited){ 
 					route.remove(route.size()-1);
-					if(!intRoute.isEmpty()) //emptied before the root node is removed, which ends the loop
-						intRoute.remove(intRoute.size()-1);
+					if(!intRoute.isEmpty()) 				//intRoute is emptied before the rootnode 
+						intRoute.remove(intRoute.size()-1); //is removed, which ends the loop
 				}
 			}
 		}	
