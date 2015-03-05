@@ -15,6 +15,10 @@
 \usepackage{ifthen}
 \usepackage{listings}
 
+
+\usepackage{enumitem}
+
+
 \usepackage{ifpdf}
 \ifpdf
 	\usepackage[hidelinks]{hyperref}
@@ -28,8 +32,7 @@
 
 % Write the name and user namn for all participants in the group here.
 % Separate persons with \and
-\author{Henrik J�rnbrand \url{heja4977} \and Tomas Sandberg \url{tosa3589}}
-
+\author{Henrik Järnbrand \url{heja4977} \and Tomas Sandberg \url{tosa3589}}
 
 
 
@@ -37,18 +40,48 @@
 
 \maketitle
 
-\section{Fr�gef�rslag}
+\section{Frågeförslag}
 
-\subsection{F�rslag 1}
-Vilka fem algoritmdesigntekniker tar boken upp? F�rklara vad varje teknik inneb�r, n�mn en algoritm som anv�nder denna teknik samt ett exempel p� algoritmens anv�ndningsomr�de. 
-F�r ett h�gre betyg ska du kunna diskutera f�r- respektive nackdelar med varje 
+\subsection{Förslag 1}
+Vilka fem algoritmdesigntekniker tar boken upp? Förklara vad varje teknik innebär, nämn en algoritm som använder denna teknik samt ett exempel på algoritmens användningsområde. 
+För ett högre betyg ska du kunna diskutera för- respektive nackdelar med varje 
 designteknik i olika situationer.
 
-\subsection{F�rslag 2}
+\subsection{Förslag 2}
+Vad innebär dynamisk programmering (dynamic programming)? Nämn ett problem som är lämpligt att lösa med dynamisk programmering och beskriv lösningen.
 
 
+\section{Implementationsförklaring – Huffman}
+
+Programmet startas med tre argument. Det första är en flagga, antingen encode eller decode beroende på om man vill komprimera eller dekomprimera. De andra två argumenten är två filnamn, en inputfil från vilken innehållet läses och en outputfil till vilken output skrivs. Mall för använding nedan:
+
+\begin{itemize}[label={}]
+	\item Huffman -encode [input file] [output file]
+	\begin{itemize}[label={}]
+		\item Komprimerar inputfilen och sparar den komprimerade filen som outputfilen.
+	\end{itemize}
+	
+	\item Huffman -decode [input file] [output file]
+	\begin{itemize}[label={}]
+		\item Dekomprimerar inputfilen och sparar den dekomprimerade filen som outputfilen.
+	\end{itemize}
+	
+\end{itemize}
+
+Programmet är tänkt att komprimera text. Texten läses in från inputfilen och komprimeras med Huffmans algoritm av ett HuffmanCoderobjekt. Det Huffmanträd som då skapas och de bytes som representerar texten sparas till outputfilen. HuffmanCoder tar in texten och räknar hur ofta varje tecken förekommer. Därefter skapas noder för varje tecken, antalet förekomster av ett tecken blir nodens vikt. Varje nod läggs i en prioritetskö som används för att bygga trädet, noderna med högst vikt placeras högst upp i trädet och de med lägst vikt hamnar längst ner.
+En djupetförstsökning traverserar sedan trädet och sparar samtliga teckens binära representation i listor innehållande heltal. Efter det komprimeras texten genom att skapa en bitrepresentation för texten som sparas i en bytearray. Komprimerings-metoden tittar på alla tecken och använder heltalsrepresentationen för att avgöra vilket värde varje bit ska ha. Slutligen returneras bytearrayen.
+
+Programmet är även tänkt att dekomprimera bytes som har komprimerats med komprimeringen ovan. Först läses Huffmanträdet och de komprimerade bytesen in. Därefter skickas de vidare till ett HuffmanDecoderobjekt. Detta objekt använder sedan trädet för att dekryptera bytesen, så de åter omvandlas till text. Dekrypteringen fungerar så att den går igenom alla bytes och sedan maskar ut en bit i taget från en byte i taget. För varje utmaskad bit tas ett steg i Huffmanträdet. När ett löv nås sparas det tecken som är lagrat i noden och promenaden börjar åter från roten. Så länge det finns olästa bytes och det finns tecken kvar att läsa så fortsätter maskandet. Texten sparas sedan på outputfilen.
 
 \end{document}
+
+
+
+
+
+
+
+
 
 
 

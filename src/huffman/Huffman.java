@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * 		Compresses the inputfile and saves the compressed file as output file.
  * 
  * Huffman -decode [input file] [output file]
- * 		Decompresses the inputfile and saves the compressed file as output file.
+ * 		Decompresses the inputfile and saves the decompressed file as output file.
  * 
  * @author Henrik Järnbrand 
  * henrikjarnbrand@gmail.com
