@@ -38,6 +38,9 @@ public class HuffmanDecoder {
 	 * the byte array to decompress.
 	 * @return
 	 * the decompressed original string.
+	 * 
+	 * @throws NullPointerException
+	 * if HuffTreeRoot has not been set or if input is null.
 	 */
 	public String decode(byte[] input){
 		if (huffTreeRoot == null){

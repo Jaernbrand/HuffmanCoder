@@ -115,7 +115,7 @@ public class Huffman {
 		} catch (ClassNotFoundException cne){
 			cne.printStackTrace();
 		} catch (ClassCastException cce){
-			System.err.println("Could not read from file.");
+			System.err.println("Could not read file format.");
 			cce.printStackTrace();
 			
 		} finally {

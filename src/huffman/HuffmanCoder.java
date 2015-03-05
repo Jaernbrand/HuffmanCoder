@@ -47,6 +47,12 @@ public class HuffmanCoder {
 	 * 
 	 * @param text
 	 * The string that is to be analyzed.
+	 * 
+	 * @throws NullPointerException
+	 * if text is null.
+	 * 
+	 * @throws IllegalArgumentException
+	 * if text length is zero.
 	 */
 	public void readString(String text){
 		if(text == null)

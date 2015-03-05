@@ -146,6 +146,46 @@ public class HuffmanTester {
 		assertEquals(original, translated);
 	}
 	
+	@Test
+	public void testCompressAndDecompressCats5000File(){
+		String[] args = {"-encode", "testFiles/Cats5000Txt.txt", "testFiles/Cats5000Txt.huff"};
+		Huffman.main(args);
+		
+		String[] args2 = {"-decode", "testFiles/Cats5000Txt.huff", "testFiles/newCats5000Txt.txt"};
+		Huffman.main(args2);
+		
+		String original = readStringFromFile("testFiles/Cats5000Txt.txt");
+		String translated = readStringFromFile("testFiles/newCats5000Txt.txt");
+		assertEquals(original, translated);
+	}
+	
+	@Test
+	public void testCompressAndDecompressCats7500File(){
+		String[] args = {"-encode", "testFiles/Cats7500Txt.txt", "testFiles/Cats7500Txt.huff"};
+		Huffman.main(args);
+		
+		String[] args2 = {"-decode", "testFiles/Cats7500Txt.huff", "testFiles/newCats7500Txt.txt"};
+		Huffman.main(args2);
+		
+		String original = readStringFromFile("testFiles/Cats7500Txt.txt");
+		String translated = readStringFromFile("testFiles/newCats7500Txt.txt");
+		assertEquals(original, translated);
+	}
+	
+	/*
+	@Test
+	public void testCompressAndDecompressCats10000File(){
+		String[] args = {"-encode", "testFiles/Cats10000Txt.txt", "testFiles/Cats10000Txt.huff"};
+		Huffman.main(args);
+		
+		String[] args2 = {"-decode", "testFiles/Cats10000Txt.huff", "testFiles/newCats10000Txt.txt"};
+		Huffman.main(args2);
+		
+		String original = readStringFromFile("testFiles/Cats10000Txt.txt");
+		String translated = readStringFromFile("testFiles/newCats10000Txt.txt");
+		assertEquals(original, translated);
+	}*/
+	
 	/*
 	@Test
 	public void testCompressAndDecompressLargeFile(){
