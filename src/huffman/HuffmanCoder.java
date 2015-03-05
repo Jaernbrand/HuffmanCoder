@@ -63,7 +63,7 @@ public class HuffmanCoder {
 			}
 		}
 		createNodes();
-		buildTree();
+		latestTree = buildTree();
 	}//readString
 	
 	
@@ -99,10 +99,8 @@ public class HuffmanCoder {
 	 */
 	public byte[] encode(String input){
 		readString(input);
-		latestTree = buildTree();
 		
 		byte[] encodedBytes = new byte[numbOfBytesToStore()];
-		
 		int currentByteIndex = 0;
 		int bitsLeft = 7;
 		
@@ -115,8 +113,7 @@ public class HuffmanCoder {
 					currentByteIndex++;
 					bitsLeft = 7;					
 				}
-				byte b = encodedBytes[currentByteIndex];
-				
+				byte b = encodedBytes[currentByteIndex];	
 				if(intRep.get(j) == 1){
 					byte mask = 1;
 					mask = (byte) (mask << bitsLeft);
