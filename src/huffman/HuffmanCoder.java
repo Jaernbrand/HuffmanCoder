@@ -149,6 +149,17 @@ public class HuffmanCoder {
 	protected HashMap<Character, Integer> getOccurrences(){
 		return new HashMap<Character, Integer>(charCount);
 	}
+	
+	
+	/**
+	 * Only for testing purposes. 
+	 * @return 
+	 * returns a list that is a binary representation of the char.
+	 */
+	public LinkedList<Integer> getIntegerRepresentation(char c){
+		LinkedList<Integer> i = charsByteRep.get(c); 
+		return i;
+	}
 
 	
 	/**
@@ -166,69 +177,53 @@ public class HuffmanCoder {
 			pQueue.add(newNode);
 		}
 		Node root = pQueue.poll();
-		saveCharByteRep(root);
+		buildCodeTable(root);
 		return root;
 	}
 	
+
 	/**
-	 * Uses the root of the tree in a dfs-search to find the integer representation of every
-	 * char in the tree. After search, saves it in the map charsByteRep.
-	 * @param root
-	 * The root of the tree.
-	 */
-	public void saveCharByteRep(Node root){
-		for(Character c : charCount.keySet()){
-			LinkedList<Integer> charByte = dfs(root, c);
-			charsByteRep.put(c, charByte);
-		}
-	}
-	
-	
-	/**
-	 * DFS-DepthFirstSearch, Highly ineffective in this scenario, probably should run bfs instead.
+	 * Builds a map of chars as keys with a list of integers as value. The list is an integer representation
+	 * of the binary code. The tree is traversed using DFS, first going left, then right. 
 	 * 
 	 * @param root 
 	 * root of the tree, passed after buildTree() has been executed.
-	 * @param c 
-	 * the char that we want to find the path to.
-	 * @return 
-	 * An ArrayList<Integer> representing the binary code for the char that is passed as an arg.
+	 * 
 	 */
-	public LinkedList<Integer> dfs(Node root, char c){
+	public void buildCodeTable(Node root){
 		Set<Node> visited = new HashSet<Node>(); 
 		ArrayList<Node> route = new ArrayList<Node>();
 		LinkedList<Integer> intRoute = new LinkedList<Integer>();
 		
 		route.add(root);
-		boolean done = false;
-		while(!done){
+		while(!route.isEmpty()){
 			Node node = route.get(route.size()-1);
+			visited.add(node);
 			
-			if(node.getChar() != null && node.getChar() == c){
-				done = true;
+			if(node.getChar() != null ){
+				charsByteRep.put(node.getChar(), new LinkedList<Integer>(intRoute));
+				route.remove(route.size()-1);
+				intRoute.remove(intRoute.size()-1);
 			}else{
-				visited.add(node);
-				
 				boolean hasUnvisited = false;
-				if(node.getRightChild() != null && !visited.contains(node.getRightChild())){
-					route.add(node.getRightChild());
-					intRoute.add(1);
-					hasUnvisited = true;
-				}
-				else if(node.getLeftChild() != null && !visited.contains(node.getLeftChild())){
+				if(node.getLeftChild() != null && !visited.contains(node.getLeftChild())){
 					route.add(node.getLeftChild());
 					intRoute.add(0);
 					hasUnvisited = true;
 				}
-				if(!hasUnvisited){
-					route.remove(route.size()-1);
-					intRoute.remove(intRoute.size()-1);
+				else if(node.getRightChild() != null && !visited.contains(node.getRightChild())){
+					route.add(node.getRightChild());
+					intRoute.add(1);
+					hasUnvisited = true;
 				}
-					
+				if(!hasUnvisited){ 
+					route.remove(route.size()-1);
+					if(!intRoute.isEmpty()) //emptied before the root node is removed, which ends the loop
+						intRoute.remove(intRoute.size()-1);
+				}
 			}
-		}
-		return intRoute;			
-	}//dfs
+		}	
+	}//buildCodeTable
 	
 	
 	

@@ -15,25 +15,24 @@ public class HuffmanCoderTester {
 	public void testDfsTreePathForChars(){
 		
 		dustin.readString("alla gillar rally");
-		Node root = dustin.buildTree();
+		dustin.buildTree();		//kör även buildCodeTable
 		
-		LinkedList<Integer> repForCharA = dustin.dfs(root, 'a');
+		LinkedList<Integer> repForCharA = dustin.getIntegerRepresentation('a');
 		LinkedList<Integer> oracleForA = new LinkedList<Integer>(Arrays.asList(1,0));		
 		for(int i = 0; i < repForCharA.size(); ++i)
 			assertEquals(oracleForA.get(i),repForCharA.get(i));
 		
-		LinkedList<Integer> repForCharI = dustin.dfs(root, 'i');
+		LinkedList<Integer> repForCharI = dustin.getIntegerRepresentation('i');
 		LinkedList<Integer> oracleForI = new LinkedList<Integer>(Arrays.asList(0,0,1,1));
-		for(int i = 0; i < repForCharA.size(); ++i)
+		for(int i = 0; i < repForCharI.size(); ++i)
 			assertEquals(oracleForI.get(i),repForCharI.get(i));
 		
-		LinkedList<Integer> repForCharG = dustin.dfs(root, 'g');
+		LinkedList<Integer> repForCharG = dustin.getIntegerRepresentation('g');
 		LinkedList<Integer> oracleForG = new LinkedList<Integer>(Arrays.asList(0,0,1,0));
 		for(int i = 0; i < repForCharG.size(); ++i)
 			assertEquals(oracleForG.get(i),repForCharG.get(i));
 		
 	}//testDfsTreePath
-	
 	
 }
 
