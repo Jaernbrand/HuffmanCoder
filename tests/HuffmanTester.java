@@ -133,6 +133,19 @@ public class HuffmanTester {
 		assertEquals(original, translated);
 	}
 	
+	@Test
+	public void testCompressAndDecompressCats1000File(){
+		String[] args = {"-encode", "testFiles/Cats1000Txt.txt", "testFiles/Cats1000Txt.huff"};
+		Huffman.main(args);
+		
+		String[] args2 = {"-decode", "testFiles/Cats1000Txt.huff", "testFiles/newCats1000Txt.txt"};
+		Huffman.main(args2);
+		
+		String original = readStringFromFile("testFiles/Cats1000Txt.txt");
+		String translated = readStringFromFile("testFiles/newCats1000Txt.txt");
+		assertEquals(original, translated);
+	}
+	
 	/*
 	@Test
 	public void testCompressAndDecompressLargeFile(){
