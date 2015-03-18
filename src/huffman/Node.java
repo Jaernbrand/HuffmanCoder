@@ -5,10 +5,8 @@ import java.io.Serializable;
 /**
  * Node used to construct Huffman-trees.
  * 
- * @author Henrik Järnbrand 
- * henrikjarnbrand@gmail.com
+ * @author Henrik Järnbrand
  * @author Tomas Sandberg 
- * tomassandberg86@hotmail.com
  */
 class Node implements Serializable, Comparable<Node>{
 

@@ -18,10 +18,8 @@ import java.util.ArrayList;
  * Huffman -decode [input file] [output file]
  * 		Decompresses the inputfile and saves the decompressed file as output file.
  * 
- * @author Henrik Järnbrand 
- * henrikjarnbrand@gmail.com
+ * @author Henrik Järnbrand
  * @author Tomas Sandberg 
- * tomassandberg86@hotmail.com
  */
 public class Huffman {
 	
