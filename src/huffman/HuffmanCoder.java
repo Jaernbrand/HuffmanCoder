@@ -13,9 +13,7 @@ import java.util.Set;
  * Compresses text using Huffman's algorithm. The compressed text is saved as bytes. 
  * 
  * @author Henrik Järnbrand 
- * henrikjarnbrand@gmail.com
  * @author Tomas Sandberg 
- * tomassandberg86@hotmail.com
  */
 public class HuffmanCoder {
 
