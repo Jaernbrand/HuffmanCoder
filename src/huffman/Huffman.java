@@ -12,7 +12,8 @@ import java.util.ArrayList;
  * the output to.
  * 
  * Huffman -encode [input file] [output file]
- * 		Compresses the inputfile and saves the compressed file as output file.
+ * 		Compresses the inputfile and saves the compressed file as output file. 
+ * 		The input file have to be an unformatted text file. 
  * 
  * Huffman -decode [input file] [output file]
  * 		Decompresses the inputfile and saves the decompressed file as output file.

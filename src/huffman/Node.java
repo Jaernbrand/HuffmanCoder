@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @author Tomas Sandberg 
  * tomassandberg86@hotmail.com
  */
-public class Node implements Serializable, Comparable<Node>{
+class Node implements Serializable, Comparable<Node>{
 
 	// Default value for serialVersionUID
 	private static final long serialVersionUID = 1L;
