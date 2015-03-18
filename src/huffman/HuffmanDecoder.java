@@ -5,9 +5,7 @@ package huffman;
  * Decompresses bytes that have been compressed by HuffmanCoder.
  * 
  * @author Henrik Järnbrand 
- * henrikjarnbrand@gmail.com
  * @author Tomas Sandberg 
- * tomassandberg86@hotmail.com
  */
 public class HuffmanDecoder {
 
